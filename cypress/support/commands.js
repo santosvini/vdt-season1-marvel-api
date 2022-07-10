@@ -78,6 +78,46 @@ Cypress.Commands.add('getCharacters', function() {
   })
 })
 
+Cypress.Commands.add('getCharacterById', function(characterId) {
+  cy.api({
+    method: 'GET',
+    url: '/characters/' + characterId,
+    headers: { 
+      Authorization: Cypress.env('token') 
+    },
+    failOnStatusCode: false
+  }).then(function(response) {
+    return response
+  })
+})
+
+Cypress.Commands.add('deleteCharacterById', function(characterId) {
+  cy.api({
+    method: 'DELETE',
+    url: '/characters/' + characterId,
+    headers: { 
+      Authorization: Cypress.env('token') 
+    },
+    failOnStatusCode: false
+  }).then(function(response) {
+    return response
+  })
+})
+
+Cypress.Commands.add('searchCharacters', function(characterName) {
+  cy.api({
+    method: 'GET',
+    url: '/characters',
+    qs: {name: characterName},
+    headers: { 
+      Authorization: Cypress.env('token') 
+    },
+    failOnStatusCode: false
+  }).then(function(response) {
+    return response
+  })
+})
+
 Cypress.Commands.add('populateCharacters', function(characters) {
   characters.forEach(function(character) {
     cy.postCharacters(character)
