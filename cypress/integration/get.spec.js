@@ -21,8 +21,6 @@ describe("GET /characters", function () {
   ];
 
   before(function () {
-    cy.back2ThePast();
-    cy.setToken();
     cy.populateCharacters(characters);
   });
 
@@ -46,11 +44,6 @@ describe("GET /characters", function () {
 })
 
 describe('GET /characters/id', function() {
-
-  before(function () {
-    cy.back2ThePast();
-    cy.setToken();
-  });
 
   const tonyStark = {
       name: "Tony Stark",

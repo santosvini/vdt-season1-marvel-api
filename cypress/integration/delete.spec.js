@@ -1,10 +1,5 @@
 describe('DELETE /characters/id', function() {
 
-  before(function () {
-    cy.back2ThePast();
-    cy.setToken();
-  });
-
   const drEstranho = {
       name: "Steven Strange",
       alias: "Dr. Estranho",
@@ -35,6 +30,7 @@ describe('DELETE /characters/id', function() {
       cy.getCharacterById(id).then(function(response) {
         expect(response.status).to.equal(404);
       })
+      
     })
 
   })
